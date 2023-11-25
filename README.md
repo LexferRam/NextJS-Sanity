@@ -34,3 +34,80 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Sanity instalation
+
+* Create sanity project 
+
+```cmd
+npx create sanity@latest
+```
+
+* In the config file copy de the **projectId**
+
+* In the nextJS project install:
+
+```cmd
+sudo npm i sanity next-sanity
+```
+
+* Create sanity.config,ts
+
+```ts
+import { defineConfig } from 'sanity';
+import { deskTool } from 'sanity/desk';
+
+const config = defineConfig({
+    projectId: "vrmd1yl0",
+
+    dataset: "production",
+
+    title: "My personal website",
+
+    apiVersion: "2023-11-24",
+
+    basePath: "/admin",
+
+    plugins: [deskTool()]
+})
+
+export default config;
+```
+
+* Inside app folder create a route Admin, which is gonna be the NextStudio component from sanity:
+
+```ts
+'use client'
+
+import { NextStudio } from 'next-sanity/studio'
+import config from '../../../../sanity.config'
+
+const AdmiPage = () => {
+  return (
+    <NextStudio
+        config={config}
+    />
+  )
+}
+
+export default AdmiPage
+```
+
+## Images Sanity
+
+* install 
+
+```cmd
+npm install --save next-sanity-image
+```
+
+* add: 
+
+```ts
+// next.config.js
+module.exports = {
+	images: {
+		domains: ['cdn.sanity.io']
+	}
+};
+```
