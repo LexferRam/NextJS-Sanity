@@ -14,7 +14,13 @@ export async function getProjects(): Promise<Project[]> {
             "image": image.asset->url,
             url,
             content
-        }`
+        }`,
+        {
+            cache: 'no-store', // if data change frequetly ==>  SSR
+            // next:{
+            //     revalidate: 1 // revalidate after 10 seconds ==>  ISR
+            // }
+        }
     )
 }
 
