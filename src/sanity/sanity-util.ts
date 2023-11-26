@@ -18,7 +18,7 @@ export async function getProjects(): Promise<Project[]> {
         {
             // cache: 'no-store', // if data change frequetly ==>  SSR
             next:{
-                revalidate: 1 // revalidate after 10 seconds ==>  ISR
+                revalidate: 60 // revalidate after 10 seconds ==>  ISR
             }
         }
     )
