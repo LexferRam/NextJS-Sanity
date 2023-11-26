@@ -16,10 +16,10 @@ export async function getProjects(): Promise<Project[]> {
             content
         }`,
         {
-            cache: 'no-store', // if data change frequetly ==>  SSR
-            // next:{
-            //     revalidate: 1 // revalidate after 10 seconds ==>  ISR
-            // }
+            // cache: 'no-store', // if data change frequetly ==>  SSR
+            next:{
+                revalidate: 1 // revalidate after 10 seconds ==>  ISR
+            }
         }
     )
 }
